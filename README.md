@@ -11,7 +11,7 @@ Upload your file, explore your routes on a map, and see your stats in an interac
 ![Dashboard Screenshot](images/dashboard-screenshot.png)
 
 **Demo GIF**  
-![Dashboard Demo](images/dashboard-demo.gif)
+![Dashboard Demo](images/dashboard-screenshot.gif)
 
 ---
 
