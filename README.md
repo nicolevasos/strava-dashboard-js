@@ -65,7 +65,9 @@ project/
      - Use the map to view routes.
      - Check the chart for activity metrics.
      - Filter by sport for detailed insights.
-    
+
+---
+
 ## Technologies
 
 Leaflet.js — interactive maps
@@ -75,6 +77,8 @@ Chart.js — beautiful charts
 PapaParse — CSV parsing
 
 Mapbox Polyline — decoding Strava routes
+
+---
 
 ## License
 
