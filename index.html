@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Strava Polylines Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div id="welcomeModal">
+    <div class="modal-content">
+        <h2>Welcome to My Activity Dashboard!</h2>
+        <p>Upload your Strava CSV file, filter your activities and explore your routes and stats on the map and interactive chart.</p>
+        <button id="closeModal">Got it!</button>
+    </div>
+    </div>
+
+    <!-- Top Strava Banner -->
+    <div id="topBanner">
+    <img src="images/strava.png" alt="Your Logo" class="logo" />
+    <h1>My Activity Tracker</h1>
+    <img src="images/NS.png" alt="Strava Logo" class="strava-logo" />
+    </div>
+
+    
+    <!-- Controls Banner -->
+    <div id="controls">
+        <label for="fileInput">
+        Upload CSV:
+        <input type="file" id="fileInput" accept=".csv" />
+        </label>
+
+        <label for="sportFilter">
+        Filter by Sport:
+        <select id="sportFilter">
+            <option value="all">All Sports</option>
+        </select>
+        </label>
+    </div>
+    
+
+    <!-- Dashboard: Map + Chart -->
+    <div id="dashboard">
+        <div id="map"></div>
+        
+        <canvas id="activityChart"></canvas>
+    </div>
+
+  <!-- External JS Libraries -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mapbox/polyline@1.1.1/src/polyline.min.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- My Script -->
+  <script src="script.js"></script>
+
+</body>
+</html>
