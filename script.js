@@ -8,7 +8,6 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 // Heatmap Legend
-// Create the legend but don't add it yet
 var legend = L.control({ position: 'bottomleft' });
 
 legend.onAdd = function(map) {
