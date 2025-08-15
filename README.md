@@ -44,7 +44,7 @@ project/
 
 1. **Download or Clone** this repository.
    ```bash
-   git clone https://github.com/nicolevasos/strava-dashboard.git
+   git clone https://github.com/nicolevasos/strava-dashboard-js
 
 2. Open index.html in your browser.
 
