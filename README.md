@@ -1,4 +1,4 @@
-# 🏃 Strava Activity Dashboard
+# 🚴🏻‍♀️ Strava Activity Dashboard 🥇
 
 An **interactive web dashboard** that visualizes your Strava activities from a CSV export.  
 Upload your file, explore your routes on a map, and see your stats in an interactive chart — all in your browser.
