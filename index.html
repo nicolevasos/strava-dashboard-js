@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>My Sportive Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="style.css" /> 
+</head>
+<body>
+
+    <div id="welcomeModal" style="display: none;"> <div class="modal-content">
+            <h2>Welcome to My Activity Dashboard!</h2>
+            <p>Let's dive into my sportive journey all over the world!</p>
+            <button id="closeModal">Got it!</button>
+        </div>
+    </div>
+    
+    <div id="app-container">
+
+        <header id="topBanner">
+            <img class="avatar" id="athletePhoto" src="images/athlete.png" alt="Athlete Photo" />
+            <img src="images/NS_logo_white.svg" alt="Strava Logo" class="strava-logo" />
+            <div class="title">My Sportive Dashboard</div>
+            
+            <div class="filters">
+                
+                <div class="filter-group">
+                    <select id="sportFilter">
+                        <option value="all">All Sports</option>
+                        </select>
+                </div>
+
+                <div class="filter-group date-range-inputs">
+                    <input type="date" id="startDate" placeholder="Start Date" style="width: 100px;" />
+                    <span>–</span>
+                    <input type="date" id="endDate" placeholder="End Date" style="width: 100px;" />
+                </div>
+            </div>
+        </header>
+
+        <div id="controls" class="card" style="display: none;">
+            <label for="fileInput">
+                Upload CSV:
+                <input type="file" id="fileInput" accept=".csv" />
+            </label>
+        </div>
+
+
+        <div id="main-dashboard-content">
+
+            <div id="left-column">
+                
+                <div class="kpi-group">
+                    
+                    <div class="pill" title="Total mileage in selected range">
+                        <div>Total KM</div>
+                        <div class="k" id="kpi-distance">2780.5</div>
+                    </div>
+                    
+                    <div class="pill" title="Total Elevation Gain">
+                        <div>Total Elevation</div>
+                        <div class="k" id="kpi-elev">40010 m</div>
+                    </div>
+
+                    <div class="pill" title="Average Pace">
+                        <div>Avg Pace</div>
+                        <div class="k" id="kpi-pace">8:55 min/km</div>
+                    </div>
+                    
+                    <div class="pill" title="Average Speed">
+                        <div>Avg Speed</div>
+                        <div class="k" id="kpi-speed">6.7 km/h</div>
+                    </div>
+                    
+                    <div class="pill" title="Number of Activities">
+                        <div>Activities</div>
+                        <div class="k" id="kpi-count">245</div>
+                    </div>
+
+                </div>
+
+                <div class="card chart-card">
+                    <h3>Summary per Month</h3>
+                    <canvas id="activityChart" style="width:100%; height:250px;"></canvas>
+                </div>
+
+                <div class="card table-card">
+                    <h3>Personal Bests</h3>
+                    <div id="personal-bests-table-container">
+                        <table id="personal-bests-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th style="text-align: right;">Total Distance (km)</th>
+                                    <th style="text-align: right;">Elapsed Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>13/06/2025</td><td>Munich to Salzburg</td><td style="text-align: right;">188.94</td><td style="text-align: right;">18:23</td></tr>
+                                <tr><td>26/03/2025</td><td>Summer Lake Hunt</td><td style="text-align: right;">186.21</td><td style="text-align: right;">6:02</td></tr>
+                                <tr><td>14/05/2025</td><td>Larch Ride - Innerbachlalm</td><td style="text-align: right;">182.23</td><td style="text-align: right;">9:03</td></tr>
+                                <tr><td>20/06/2024</td><td>Murillo - Valle de las Tumbas (Nevado del Ruiz)</td><td style="text-align: right;">92.14</td><td style="text-align: right;">7:03</td></tr>
+                                <tr><td>30/04/2025</td><td>Manzing Road - Waginger See</td><td style="text-align: right;">75.87</td><td style="text-align: right;">4:22</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div> 
+            
+            <div id="right-column">
+                
+                <div class="card map-card">
+                    <h3>Spatial Concentration & Route Map</h3>
+                    <div id="map" style="width:100%; height:480px; border:none;"></div>
+                </div>
+
+                <div id="geographic-summary-card" class="card">
+                    <h3>Geographic Summary</h3>
+                    <div class="kpi-group" id="geographic-kpi-group">
+                        <div class="pill">
+                            <div>🌍 Unique Countries</div>
+                            <div class="k" id="kpi-countries">0</div>
+                        </div>
+                        <div class="pill">
+                            <div>🏙️ Unique Cities</div>
+                            <div class="k" id="kpi-cities">0</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mapbox/polyline@1.1.1/src/polyline.min.js"></script>
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

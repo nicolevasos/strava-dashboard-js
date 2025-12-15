@@ -1,0 +1,370 @@
+/*
+ * Strava Dashboard Stylesheet
+ * Theme: Dash-style Flexbox Layout with Strava Orange Highlights
+ */
+
+/* ----------------------------------------------------
+ * 1. Global Reset & Typography 
+ * ---------------------------------------------------- */
+:root {
+    --strava-orange: #ceb3c9;
+    --strava-light-orange: #f0e5eb; /* Light background for highlights */
+    --background-light: #f9f9f9;
+    --card-background: #FFFFFF;
+    --text-color-primary: #333;
+    --border-color: #f0f0f0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI";
+    background-color: var(--background-light); 
+    color: var(--text-color-primary);
+    margin: 20px; /* Desktop Margin */
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+h3 { 
+    font-size: 1.2em;
+    color: var(--text-color-primary); 
+    margin-bottom: 8px;
+}
+
+/* ----------------------------------------------------
+ * 2. Banner & Header Controls (#topBanner)
+ * ---------------------------------------------------- */
+#topBanner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--strava-orange);
+    color: white;
+    padding: 15px 20px; 
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+}
+
+#topBanner .title {
+    font-size: 28px;
+    font-weight: 700;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.avatar {
+    height: 50px; 
+    width: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 18px;
+    margin-left: 10px;
+}
+
+/* --- LOGO ORDERING MODIFICATION START --- */
+#topBanner .logo,
+#topBanner .strava-logo {
+  height: 30px;
+}
+
+#topBanner .logo {
+  margin-right: 10px;
+  order: 2; 
+}
+
+#topBanner .strava-logo {
+  margin-left: 29px;
+  order: 3; 
+}
+/* --- LOGO ORDERING MODIFICATION END --- */
+
+/* Header Filter Styling */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.0em;
+}
+
+.filter-group.date-filters {
+    order: 1; 
+}
+
+.filter-group select, 
+.filter-group input {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.0em;
+    background-color: white;
+    color: var(--text-color-primary);
+    outline: none;
+}
+
+.filter-group span {
+    color: white; 
+    font-weight: 700;
+}
+
+/* ----------------------------------------------------
+ * 3. KPI Card Style (Pills)
+ * ---------------------------------------------------- */
+.kpi-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+    margin-bottom: 12px;
+}
+
+.pill {
+    flex: 1 1 120px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    
+}
+
+.pill div:first-child { 
+    font-size: 11px;
+    margin: 1px 0 3px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #666; 
+    font-weight: bold;
+}
+
+.pill .k { 
+    font-size: 18px;
+    margin: 2px 0;
+    font-weight: bold;
+    color: #b39cafff; 
+    display: block;
+}
+
+/* ----------------------------------------------------
+ * 4. Main Content Layout (Flexbox)
+ * ---------------------------------------------------- */
+#main-dashboard-content {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#left-column {
+    flex: 1 1 400px; 
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+#right-column {
+    flex: 2 1 700px; 
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+/* ----------------------------------------------------
+ * 5. Card & Container Styles
+ * ---------------------------------------------------- */
+.card {
+    background-color: var(--card-background);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.card h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.chart-card {
+    flex-grow: 1;
+}
+
+.table-card {
+    flex-grow: 0.5;
+}
+
+.map-card {
+    flex-grow: 1;
+}
+
+/* Geographic Summary Card: ensure the pills inside it are spaced well */
+#geographic-summary-card .kpi-group {
+    justify-content: space-around;
+    gap: 20px; 
+}
+
+#geographic-summary-card .pill {
+    flex: 1 1 40%; 
+    max-width: 50%;
+}
+
+/* ----------------------------------------------------
+ * 6. Map
+ * ---------------------------------------------------- */
+#map {
+    width: 100%;
+    height: 600px; /* Desktop Height */
+    border-radius: 6px;
+    border: 1px solid var(--border-color); 
+}
+
+/* ----------------------------------------------------
+ * 7. Personal Bests Table
+ * ---------------------------------------------------- */
+#personal-bests-table-container {
+    max-height: 250px; 
+    overflow-y: auto;
+}
+
+#personal-bests-table {
+    width: 100%;
+    border-collapse: collapse; 
+    font-size: 13px; 
+    text-align: left;
+}
+
+#personal-bests-table th,
+#personal-bests-table td {
+    padding: 6px 10px; 
+    border-bottom: 1px solid var(--border-color);
+}
+
+#personal-bests-table thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--card-background);
+    z-index: 10;
+}
+
+#personal-bests-table th {
+    background-color: #eee;
+    color: #555; 
+    font-weight: 600;
+    text-transform: none;
+}
+
+/* ----------------------------------------------------
+ * 8. Welcome Modal Styling (Standard/Hidden)
+ * ---------------------------------------------------- */
+#welcomeModal {
+    display: none; 
+    position: fixed;
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    justify-content: center;
+    align-items: center;
+}
+#controls {
+    display: none; 
+}
+
+/* ----------------------------------------------------
+ * 9. Responsiveness
+ * ---------------------------------------------------- */
+
+/* --- Tablet / Smaller Desktop (1200px and below) --- */
+@media (max-width: 1200px) { 
+    #main-dashboard-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #left-column, #right-column {
+        flex: 1 1 100%; 
+        min-width: auto;
+        gap: 10px;
+    }
+    
+    #map {
+        height: 500px; 
+    }
+    
+    body {
+        margin: 15px;
+    }
+}
+
+/* --- iPad / Tablet Portrait (768px and below) --- */
+@media (max-width: 768px) {
+    /* Header Stacking and Padding adjustments (Good for iPad portrait) */
+    #topBanner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+    }
+    .filters {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap; 
+        gap: 8px;
+    }
+    
+    /* Ensure filter groups use available width */
+    .filter-group {
+        flex-basis: 48%; 
+    }
+
+    /* KPI Stacking (2 columns) */
+    .kpi-group {
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .pill {
+        flex: 1 1 calc(50% - 8px); 
+        padding: 8px;
+    }
+    .pill .k {
+        font-size: 16px;
+    }
+    
+    /* General Reductions */
+    .card {
+        padding: 10px;
+    }
+
+    #map {
+        height: 400px;
+    }
+    
+    h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* --- Mobile Phone Specific (576px and below) --- */
+/* DISABLE MOBILE BREAKPOINTS by setting max-width to a tiny value */
+@media (max-width: 1px) {
+    /* These styles will only apply on screens 1px wide or less, effectively disabling them. */
+}
+
+/* --- Extra-Small Mobile Optimization (420px and below) --- */
+@media (max-width: 1px) {
+    /* Disabled */
+}
