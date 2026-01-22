@@ -16,7 +16,7 @@ Upload your file, explore your routes on a map, and see your stats in an interac
 ---
 
 ## Features
-- 📂 **Upload CSV** — load your Strava data instantly (csv fetched by using the Strava API -https://developers.strava.com/docs/getting-started/-).
+- 📂 **Upload CSV** — load your Strava data instantly (csv fetched by using the Strava API -https://developers.strava.com/docs/getting-started/-). Or click here to dowload a demo to upload https://github.com/nicolevasos/strava-dashboard-js/blob/main/data/demo_data.csv
 - 🗺 **Interactive Map** — zoom, pan, and view your activities.
 - 📊 **Dynamic Chart** — visualize distance, elevation, or time.
 - 🔍 **Sport Filter** — view activities by sport type.
